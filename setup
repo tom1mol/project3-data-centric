@@ -1,0 +1,34 @@
+database creation                                                           https://youtu.be/jLRiVcCuRVU
+
+create flask app                                                            https://youtu.be/PgrLUteMsmY
+
+sudo pip3 install flask                                             #install flask
+
+deploy app to heroku                                                        https://youtu.be/15HJAVSID6A
+
+heroku login
+
+heroku apps                                                         #check apps
+
+git init
+git add .
+git commit -m 'initial commit'
+heroku git:remote -a project3-data-centric
+git push heroku master
+sudo pip3 freeze --local > requirements.txt
+git add .
+git commit -m"added req.txt"
+git push heroku master
+
+echo web: python app.py > Procfile
+
+git add .
+git commit -m"added procfile"
+
+heroku ps:scale web=1
+
+
+now set config vars in heroku
+IP 0.0.0.0
+PORT 5000
+
