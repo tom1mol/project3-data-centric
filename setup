@@ -4,31 +4,82 @@ create flask app                                                            http
 
 sudo pip3 install flask                                             #install flask
 
+                                                        ===========================
+
+now create app.py and paste in code below:
+
+import os
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello():
+    return 'Hello World ...again'
+
+
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+            port=int(os.environ.get('PORT')),
+            debug=True)
+            
+                                            =============================================
+
 deploy app to heroku                                                        https://youtu.be/15HJAVSID6A
 
-heroku login
+heroku login                            creating connection between c9/heroku that allows us push our changes using git to update app at any time
 
 heroku apps                                                         #check apps
 
 git init
+
 git add .
 git commit -m 'initial commit'
-heroku git:remote -a project3-data-centric
-git push heroku master
+
+heroku git:remote -a project3-data-centric              #associate heroku app as remote master branch
+
 sudo pip3 freeze --local > requirements.txt
-git add .
-git commit -m"added req.txt"
-git push heroku master
+git push heroku master                                  #this fails
 
 echo web: python app.py > Procfile
-
 git add .
 git commit -m"added procfile"
+git push heroku master
 
 heroku ps:scale web=1
+
+
 
 
 now set config vars in heroku
 IP 0.0.0.0
 PORT 5000
+                                                ===========================================
+                                                
+CONNECTING FLASK TO MONGODB ATLAS                                               https://youtu.be/Lh6Lj9Lsc2k
+
+sudo pip3 install flask-pymongo                             #optimised to work with flask
+sudo pip3 install dnspython                                 #uses new style connection string for mongodb atlas
+
+                                                =====================================
+now back to app.py and add aditional imports:
+
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+
+
+
+now add mongo database name and uri linking to that database:
+
+app.config["MONGO_DBNAME"] = 'project3-data-centric'
+app.config["MONGO_URI"] = ''
+
+now we go to mongo to ge tour connection string:
+overview=connection-connect your application and copy the connection string:
+mongodb+srv://shoot:<password>@myfirstcluster-tjr5r.mongodb.net/test?retryWrites=true
+this is then pasted into quote on line 76 above and then pasted into app.py
+
+
+
 
