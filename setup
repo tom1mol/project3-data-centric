@@ -18,11 +18,16 @@ app = Flask(__name__)
 def hello():
     return 'Hello World ...again'
 
-
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+if __name__ == "__main__":          
+    app.run(host=os.getenv('IP', '0.0.0.0'), 
+            port=int(os.getenv('PORT', 8080)), 
             debug=True)
+            
+            replaced code below with code above in app.py
+#if __name__ == '__main__':
+#    app.run(host=os.environ.get('IP'),
+#            port=int(os.environ.get('PORT')),
+#            debug=True)
             
                                             =============================================
 
@@ -63,6 +68,8 @@ sudo pip3 install flask-pymongo                             #optimised to work w
 sudo pip3 install dnspython                                 #uses new style connection string for mongodb atlas
 
                                                 =====================================
+connect flask to mongodb                                            https://youtu.be/Lh6Lj9Lsc2k
+
 now back to app.py and add aditional imports:
 
 from flask_pymongo import PyMongo
@@ -75,10 +82,13 @@ now add mongo database name and uri linking to that database:
 app.config["MONGO_DBNAME"] = 'project3-data-centric'
 app.config["MONGO_URI"] = ''
 
-now we go to mongo to ge tour connection string:
-overview=connection-connect your application and copy the connection string:
+now we go to mongo to get our connection string:
+overview-connection-connect your application.... and copy the connection string:
 mongodb+srv://shoot:<password>@myfirstcluster-tjr5r.mongodb.net/test?retryWrites=true
-this is then pasted into quote on line 76 above and then pasted into app.py
+this is then pasted into quote on line 81 above(app.config["MONGO_URI"] = '') and then pasted into app.py
+
+
+
 
 
 
