@@ -1,6 +1,27 @@
 database creation                                                           https://youtu.be/jLRiVcCuRVU
 
+
+download/install latest mongo                                               https://github.com/Code-Institute-Solutions/GoHumongousWithMongoDB/blob/master/02-ManipulateDataUsingMongoShell/01-create_and_read_back_data/commands.sh
+
+# Download and install MongoDB client 3.4 for mLab
+wget -q https://git.io/vFb1J -O /tmp/setupmongodb.sh && source /tmp/setupmongodb.sh
+
+# Download and install MongoDB client 4.0.6 for Atlas
+wget -q https://git.io/fh7vV -O /tmp/setupmongodb.sh && source /tmp/setupmongodb.sh
+
+# Connect to the Mongo Database on mLab
+# NOTE: REPLACE THE `<dbuser>` & `<dbpassword>` WITH YOUR OWN PERSONAL
+# VALUES (WITHOUT THE ANGULAR BRACKETS)
+mongo ds159812.mlab.com:59812/mytestdb -u <dbuser> -p <dbpassword>
+
+# Connect to the Mongo Database on Atlas
+# NOTE: REPLACE THE `<dbuser>` & `<dbname>` WITH YOUR OWN PERSONAL
+# VALUES (WITHOUT THE ANGULAR BRACKETS)
+mongo "mongodb+srv://myfirstcluster-fsmjm.mongodb.net/<dbname>" --username <dbuser>
+
+                                            =============================================
 create flask app                                                            https://youtu.be/PgrLUteMsmY
+
 
 sudo pip3 install flask                                             #install flask
 
@@ -86,6 +107,16 @@ now we go to mongo to get our connection string:
 overview-connection-connect your application.... and copy the connection string:
 mongodb+srv://shoot:<password>@myfirstcluster-tjr5r.mongodb.net/test?retryWrites=true
 this is then pasted into quote on line 81 above(app.config["MONGO_URI"] = '') and then pasted into app.py
+
+                                    ========================================================
+template inheritance                                                        https://youtu.be/8LSEte5ZQy8
+
+                                    ========================================================
+                                    MATERIALIZE
+                                    
+materialize setup                                                           https://youtu.be/Rucohcqzp7E
+link                                                                        https://materializecss.com/
+
 
 
 
