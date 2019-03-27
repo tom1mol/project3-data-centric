@@ -115,7 +115,28 @@ template inheritance                                                        http
                                     MATERIALIZE
                                     
 materialize setup                                                           https://youtu.be/Rucohcqzp7E
-link                                                                        https://materializecss.com/
+link                                                                        https://materializecss.com/     
+                                                                            https://materializecss.com/getting-started.html
+source code                     https://github.com/Code-Institute-Solutions/TaskManager/tree/master/01-PuttingTheBasicsInPlace/06-materialize_setup
+                                                                            
+Materialize CDN for compiled and minified CSS:
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+Materialize CDN for compiled and minified JS:
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+                                    ========================================================
+                                    ACCORDION SETUP
+accordion setup                                                 https://youtu.be/_4qIjX-pPMg
+
+links                                                           https://materializecss.com/collapsible.html
+sourcecode                          https://github.com/Code-Institute-Solutions/TaskManager/tree/master/01-PuttingTheBasicsInPlace/07-accordion_setup
+
+                                    =========================================================
+
+
 
 
 
