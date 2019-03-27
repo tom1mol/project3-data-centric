@@ -20,8 +20,15 @@ mongo = PyMongo(app)
 def get_tasks():
     return render_template("tasks.html", tasks=mongo.db.tasks.find()) 
 
+if __name__ == "__main__":          
+    app.run(host=os.getenv('IP', '0.0.0.0'), 
+            port=int(os.getenv('PORT', 8080)), 
+            debug=True) 
+
+
+
                             #set up ip address and port num
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
-            debug=True)
+#if __name__ == '__main__':
+#    app.run(host=os.environ.get('IP'),
+#            port=int(os.environ.get('PORT')),
+#            debug=True)
