@@ -1,9 +1,13 @@
-<!-- we remove html elements(<head><body> etc) to allow the child tag inherrit correctly from the parent(base.html) -->
-
 {% extends 'base.html' %}
 {% block content %}                         <!-- specify data that will be injected into the parent(block content) -->
         
-         
+    {% for task in tasks %}
+        {{task.task_name}}                  <!--display contents of each fieldname in our database -->
+        {{task.category_name}}
+        {{task.task_description}}
+        {{task.is_urgent}}
+        {{task.due_date}}
+    {% endfor %}
         <!-- has to be inside block tags. if not..it wont be displayed when parent/child templates render-->
         <!-- https://materializecss.com/collapsible.html-->
         <!-- these are initialized/fired by the js in base.html .......$('.collapsible').collapsible(); -->
