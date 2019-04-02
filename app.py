@@ -44,6 +44,19 @@ def edit_task(task_id):     #retrieve task from database using. fetching the tas
     return render_template('edittask.html', task=the_task, categories=all_categories)
     
     
+    
+@app.route('/update_task/<task_id>', methods=['POST'])        #POST method hides values from URL bar when being sent across
+def update_task(task_id):                                   #pass in task_id às its our hook into primary key
+    tasks = mongo.db.tasks                                  #we access tasks collection and then we call update function
+    tasks.update( {'_id': ObjectId(task_id)},
+    {
+        'task_name': request.form.get['task_name'],
+        'category_name': request.form.get['category_name'],
+        'task_description': request.form.get['task_description'],
+        'due_date': request.form.get['due_date'],
+        'is_urgent': request.form.get['is_urgent']
+    })
+    return redirect(url_for('get_tasks'))
 
 if __name__ == "__main__":          
     app.run(host=os.getenv('IP', '0.0.0.0'), 
