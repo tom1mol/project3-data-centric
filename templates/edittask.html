@@ -22,20 +22,27 @@
                 <label>Task Category</label>
             </div>
         </div>
+        
+                            <!-- TASK_NAME //-->
         <div class="row">
             <div class="input-field col s12">                                               <!--these were side by side(s6)-->
                 <i class="material-icons prefix">assignment</i>
-                <input id="task_name" name="task_name" type="text" class="validate">
+                <input id="task_name" name="task_name" type="text" class="validate" value="{{task.task_name}}">
                 <label for="icon_prefix">Task Name</label>
             </div>
         </div>
+        
+                            <!-- TASK_DESCRIPTION //-->
         <div class="row">
             <div class="input-field col s12">                                               <!--these were side by side(s6)-->
                 <i class="material-icons prefix">subject</i>
-                <textarea name="task_description" id="task_description" class="materialize-textarea"></textarea>
+                <textarea name="task_description" id="task_description" class="materialize-textarea">{{task.task_description}}</textarea>
                 <label for="icon_prefix">Task Description</label>
             </div>
         </div>
+        
+                            <!-- DATEPICKER. theres javascrip at base of page relating to this //-->        
+        
         <div class="row">                                                   <!-- http://archives.materializecss.com/0.100.2/forms.html    Date picker -->
             <div class="input-field col s12">                                                                       
                 <i class="material-icons prefix">today</i>
@@ -44,12 +51,18 @@
             </div>
         </div>
         
+                                    <!-- is_urgent //-->
+            
         <div class="row">
             <!-- Switch     http://archives.materializecss.com/0.100.2/forms.html    copied in from switches-->
             <div class="switch">
                 <label>
+                    {% if task.is_urgent %}    <!-- if task is urgent...use checked attribute(below) //-->
                     <!--Off --> <!-- left side -->
-                    <input id="is_urgent" name="is_urgent" type="checkbox">
+                        <input id="is_urgent" name="is_urgent" type="checkbox" checked>
+                    {% else %}                 <!-- else  if not urgent omit checked attribute //-->
+                        <input id="is_urgent" name="is_urgent" type="checkbox">
+                    {% endif %}
                     <span class="lever"></span>
                     <!--On-->  <!-- right side -->
                     Is Urgent
@@ -67,4 +80,18 @@
         
     </form>
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  <!--https://cdnjs.com/libraries/jquery  copy jquery                                                                    .min.js script tag. this was copied in from base as it won't bind //-->
+
+<script type="text/javascript">                         /*some javascript for DATEPICKER */
+    $(document).ready(function(){
+        
+    due_date = Date.parse('{{task.due_date}}');                                             /*local var called due_date */
+    $('#due_date').pickadate('picker').set('select', due_date, {format: 'dd/mm/yyyy'}).trigger('change') /* ID called due_date. get the pickdate called picker and set selected date as due date we just formatted on prev line. use select keyword to select particular date,  due date we are passing in is due date on prev line. also setting event trigger*/
+    });
+</script>
+
 {% endblock %}
+
+
