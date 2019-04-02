@@ -23,6 +23,21 @@ def get_tasks():
     return render_template("tasks.html", tasks=mongo.db.tasks.find())   #redirect to existing template called tasks.html
                                                                         #also a tasks collection which is returned by making call directly to mongo
                                                                         #.tasks is a collection
+                                                                        
+@app.route('/add_task')
+def add_task():
+    return render_template('addtask.html',
+    categories=mongo.db.categories.find())                     #use find function to fetch categories and pass it back in categories parameter
+    
+    
+@app.route('/insert_task', methods=['POST'])      #add_task submit button. POST is set in top of form in add_task(is why we specify it here)
+def insert_task():
+    tasks = mongo.db.tasks                      #get the tasks collection from mongo
+    tasks.insert_one(request.form.to_dict())    #do a task insert of the request.when we submit info to uri or web location is submitted in                                           form of a request obj. the form is converted into a dictionary(dict) for mongo to understand
+    return redirect(url_for('get_tasks'))   #redirect to get_tasks so we can view any changes
+    
+    
+    
 
 if __name__ == "__main__":          
     app.run(host=os.getenv('IP', '0.0.0.0'), 

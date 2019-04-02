@@ -1,17 +1,27 @@
-<!-- we remove html elements(<head><body> etc) to allow the child tag inherrit correctly from the parent(base.html) -->
+<!-- we remove html elements(<head><body> etc) to allow the child tag inherrit correctly from the parent(base.html) //-->
 
 {% extends 'base.html' %}
-{% block content %}                         <!-- specify data that will be injected into the parent(block content) -->
+{% block content %}                         <!-- specify data that will be injected into the parent(block content) //-->
         
          
-        <!-- has to be inside block tags. if not..it wont be displayed when parent/child templates render-->
+        <!-- has to be inside block tags. if not..it wont be displayed when parent/child templates render //-->
         <!-- https://materializecss.com/collapsible.html-->
-        <!-- these are initialized/fired by the js in base.html .......$('.collapsible').collapsible(); -->
-
+        <!-- these are initialized/fired by the js in base.html .......$('.collapsible').collapsible(); //-->
+<div class="row">
 <ul class="collapsible" data-collapsible="accordion"> 
     {% for task in tasks %}
     <li>
-        <div class="collapsible-header"><i class="material-icons">expand</i> <strong>{{task.task_name}} </strong> - {{task.due_date}} <!-- had expand_more as icon -->
+        <div class="collapsible-header">
+            <div class="col s3">
+                <i class="material-icons">expand_more</i>    <!-- had expand_more as icon //--> 
+                <a class="waves-effect waves-light btn btn_small">Done</a>      <!--http://archives.materializecss.com/0.100.2/buttons.html //-->
+                <a class="waves-effect waves-light btn btn_small blue">Edit</a>
+                
+            </div>
+            <div class="task_header col s9">
+               <strong>{{task.task_name}} </strong> - {{task.due_date}} 
+            </div>
+             
         
         </div>
         <div class="collapsible-body">
@@ -23,5 +33,5 @@
     {% endfor %}
 </ul>
         
-        
+</div>        
 {% endblock %}   
