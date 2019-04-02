@@ -15,7 +15,7 @@
             <div class="col s3">
                 <i class="material-icons">expand_more</i>    <!-- had expand_more as icon //--> 
                 <a class="waves-effect waves-light btn btn_small">Done</a>      <!--http://archives.materializecss.com/0.100.2/buttons.html //-->
-                <a class="waves-effect waves-light btn btn_small blue">Edit</a>
+                <a href="{{url_for('edit_task', task_id=task._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                 
             </div>
             <div class="task_header col s9">
@@ -33,5 +33,5 @@
     {% endfor %}
 </ul>
         
-</div>        
+        
 {% endblock %}   

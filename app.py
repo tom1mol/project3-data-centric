@@ -36,6 +36,12 @@ def insert_task():
     tasks.insert_one(request.form.to_dict())    #do a task insert of the request.when we submit info to uri or web location is submitted in                                           form of a request obj. the form is converted into a dictionary(dict) for mongo to understand
     return redirect(url_for('get_tasks'))   #redirect to get_tasks so we can view any changes
     
+
+@app.route('/edit_task/<task_id>')       #wire up edit button
+def edit_task(task_id):     #retrieve task from database using. fetching the task that matches task_id and redirect to edittask.html template
+    the_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)}) #wrap task_id in objectid
+    all_categories = mongo.db.categories.find()
+    return render_template('edittask.html', task=the_task, categories=all_categories)
     
     
 
