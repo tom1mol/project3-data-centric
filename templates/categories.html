@@ -1,0 +1,26 @@
+<!-- copied in from tasks.html and then edited to suit //-->
+
+{% extends 'base.html' %}
+{% block content %}                         <!-- specify data that will be injected into the parent(block content) //-->
+<div class="row">
+    
+    <h3>Categories</h3>
+    
+    <ul class="collapsible" data-collapsible="accordion">
+        {% for category in categories %}                      <!-- loop through list of categories //-->
+        <li>
+            <div class="collapsible-header">
+                    <a href="" class="waves-effect waves-light btn btn_small">Del</a>
+                    <a href="" class="waves-effect waves-light btn btn_small blue">Edit</a>
+                    <div class="task_header">                <!-- the get rid of col s9..but it doesnt work 4 me-->
+                        <strong>{{category.category_name}} </strong> 
+                    </div>
+
+
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>        
+        
+{% endblock %}   
